@@ -63,6 +63,11 @@ class EmpleadoCrudTests(TestCase):
 
 	def test_usuario_autenticado_puede_eliminar_empleado(self):
 		self.client.login(username='usuario_prueba', password='ClaveSegura123!')
+		confirmation = self.client.get(
+			reverse('personal:empleado_delete', args=[self.empleado.pk]),
+		)
+		self.assertEqual(confirmation.status_code, 200)
+		self.assertContains(confirmation, '¿Está seguro de que desea eliminar')
 		response = self.client.post(
 			reverse('personal:empleado_delete', args=[self.empleado.pk]),
 		)

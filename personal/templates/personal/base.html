@@ -16,6 +16,9 @@
         .button { display: inline-block; border: 0; border-radius: 4px; padding: .7rem 1rem; background: var(--primary); color: white; text-decoration: none; cursor: pointer; }
         .button.accent { background: var(--accent); }
         .button.muted { background: #64748b; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 1.25rem; }
+        .stat strong { display: block; font-size: 1.8rem; color: var(--primary); }
         table { width: 100%; border-collapse: collapse; background: white; }
         th, td { text-align: left; padding: .8rem; border-bottom: 1px solid var(--border); }
         th { background: #e2e8f0; }
@@ -26,14 +29,23 @@
         .errorlist { color: var(--accent); padding-left: 1.2rem; }
         dt { font-weight: bold; margin-top: 1rem; }
         dd { margin: .25rem 0 0; }
-        @media (max-width: 700px) { table { display: block; overflow-x: auto; } .topbar { align-items: flex-start; flex-direction: column; } }
+        @media (max-width: 700px) { table { display: block; overflow-x: auto; } .topbar { align-items: flex-start; flex-direction: column; } .stats { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 <header>
     <div class="topbar">
         <a href="{% url 'personal:home' %}"><strong>Gestión de Personal</strong></a>
-        <span>Usuario: {{ request.user.username }}</span>
+        <nav class="actions">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'personal:home' %}">Personal</a>
+            {% if request.user.is_authenticated %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            {% endif %}
+        </nav>
     </div>
 </header>
 <main>{% block content %}{% endblock %}</main>

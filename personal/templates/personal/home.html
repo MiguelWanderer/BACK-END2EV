@@ -3,6 +3,11 @@
 {% block content %}
 <h1>Administración de Personal</h1>
 <p>Administra empleados y consulta la información registrada.</p>
+<div class="stats">
+    <div class="stat"><strong>{{ total_empleados }}</strong>Empleados</div>
+    <div class="stat"><strong>{{ total_cargos }}</strong>Cargos</div>
+    <div class="stat"><strong>{{ total_departamentos }}</strong>Departamentos</div>
+</div>
 <div class="actions">
     <a class="button" href="{% url 'personal:empleado_list' %}">Ver empleados</a>
     <a class="button accent" href="{% url 'personal:empleado_create' %}">Registrar empleado</a>

@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import EmpleadoForm
-from .models import Empleado
+from .models import Cargo, Departamento, Empleado
 
 
 def home(request):
@@ -20,7 +20,12 @@ def register(request):
 
 @login_required
 def personal_home(request):
-	return render(request, 'personal/home.html')
+	context = {
+		'total_empleados': Empleado.objects.count(),
+		'total_cargos': Cargo.objects.count(),
+		'total_departamentos': Departamento.objects.count(),
+	}
+	return render(request, 'personal/home.html', context)
 
 
 @login_required
