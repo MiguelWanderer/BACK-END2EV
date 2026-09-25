@@ -24,3 +24,6 @@ python manage.py runserver
 ```
 
 La aplicación estará disponible en `http://127.0.0.1:8000/`.
+
+Para un entorno real, define la variable `DJANGO_SECRET_KEY` antes de ejecutar
+la aplicación. No guardes claves, contraseñas ni tokens dentro del repositorio.
