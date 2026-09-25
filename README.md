@@ -1,0 +1,26 @@
+# Sistema de Gestión de Personal
+
+Aplicación web desarrollada con Django para administrar empleados, cargos y departamentos.
+
+## Requisitos
+
+- Python 3.13 o superior
+
+## Instalación
+
+En Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install Django
+```
+
+## Ejecución
+
+```powershell
+python manage.py migrate
+python manage.py runserver
+```
+
+La aplicación estará disponible en `http://127.0.0.1:8000/`.
