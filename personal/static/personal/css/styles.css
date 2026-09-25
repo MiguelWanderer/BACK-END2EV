@@ -1,0 +1,35 @@
+:root {
+    --primary: #164e63;
+    --accent: #e11d48;
+    --light: #f8fafc;
+    --border: #cbd5e1;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #172033; background: var(--light); }
+header { background: var(--primary); color: white; padding: 1.25rem 8%; }
+header a { color: white; text-decoration: none; }
+main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.5rem 0; }
+.button { display: inline-block; border: 0; border-radius: 4px; padding: .7rem 1rem; background: var(--primary); color: white; text-decoration: none; cursor: pointer; }
+.button.accent { background: var(--accent); }
+.button.muted { background: #64748b; }
+.button:hover, .button:focus-visible { filter: brightness(1.15); outline: 3px solid #facc15; outline-offset: 2px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+.stat { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 1.25rem; }
+.stat strong { display: block; font-size: 1.8rem; color: var(--primary); }
+table { width: 100%; border-collapse: collapse; background: white; }
+th, td { text-align: left; padding: .8rem; border-bottom: 1px solid var(--border); }
+th { background: #e2e8f0; }
+.panel { background: white; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px; }
+.form-row { margin-bottom: 1rem; }
+label { display: block; font-weight: bold; margin-bottom: .35rem; }
+input, select, textarea { width: 100%; padding: .65rem; border: 1px solid var(--border); border-radius: 4px; }
+input:focus, select:focus, textarea:focus { outline: 3px solid #bae6fd; border-color: var(--primary); }
+.errorlist { color: var(--accent); padding-left: 1.2rem; }
+.messages { max-width: 1100px; margin: 1rem auto 0; padding: 0 1rem; }
+.message { margin: 0; padding: .8rem 1rem; border-left: 4px solid #15803d; background: #dcfce7; }
+dt { font-weight: bold; margin-top: 1rem; }
+dd { margin: .25rem 0 0; }
+@media (max-width: 700px) { table { display: block; overflow-x: auto; } .topbar { align-items: flex-start; flex-direction: column; } .stats { grid-template-columns: 1fr; } }

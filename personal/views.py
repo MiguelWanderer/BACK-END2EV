@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import EmpleadoForm
@@ -39,6 +40,7 @@ def empleado_create(request):
 	form = EmpleadoForm(request.POST or None)
 	if form.is_valid():
 		empleado = form.save()
+		messages.success(request, 'Empleado registrado correctamente.')
 		return redirect('personal:empleado_detail', pk=empleado.pk)
 	return render(request, 'personal/empleado_form.html', {'form': form, 'titulo': 'Registrar empleado'})
 
@@ -58,6 +60,7 @@ def empleado_update(request, pk):
 	form = EmpleadoForm(request.POST or None, instance=empleado)
 	if form.is_valid():
 		form.save()
+		messages.success(request, 'Empleado actualizado correctamente.')
 		return redirect('personal:empleado_detail', pk=empleado.pk)
 	return render(request, 'personal/empleado_form.html', {'form': form, 'titulo': 'Editar empleado'})
 
@@ -67,5 +70,6 @@ def empleado_delete(request, pk):
 	empleado = get_object_or_404(Empleado, pk=pk)
 	if request.method == 'POST':
 		empleado.delete()
+		messages.success(request, 'Empleado eliminado correctamente.')
 		return redirect('personal:empleado_list')
 	return render(request, 'personal/empleado_confirm_delete.html', {'empleado': empleado})

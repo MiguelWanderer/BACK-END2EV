@@ -4,7 +4,7 @@
 <div class="topbar"><h1>Empleados</h1><a class="button accent" href="{% url 'personal:empleado_create' %}">Nuevo empleado</a></div>
 {% if empleados %}
 <table>
-    <thead><tr><th>RUT</th><th>Nombre completo</th><th>Cargo</th><th>Departamento</th><th>Estado</th><th>Acciones</th></tr></thead>
+    <thead><tr><th scope="col">RUT</th><th scope="col">Nombre completo</th><th scope="col">Cargo</th><th scope="col">Departamento</th><th scope="col">Estado</th><th scope="col">Acciones</th></tr></thead>
     <tbody>
     {% for empleado in empleados %}
     <tr>
