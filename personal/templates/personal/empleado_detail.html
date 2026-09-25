@@ -1,0 +1,22 @@
+{% extends 'personal/base.html' %}
+{% block title %}Detalle de empleado{% endblock %}
+{% block content %}
+<h1>Información del empleado</h1>
+<div class="panel">
+    <dl>
+        <dt>RUT</dt><dd>{{ empleado.rut }}</dd>
+        <dt>Nombre</dt><dd>{{ empleado.nombre }} {{ empleado.apellido }}</dd>
+        <dt>Correo</dt><dd>{{ empleado.correo }}</dd>
+        <dt>Teléfono</dt><dd>{{ empleado.telefono }}</dd>
+        <dt>Cargo</dt><dd>{{ empleado.cargo }}</dd>
+        <dt>Departamento</dt><dd>{{ empleado.departamento }}</dd>
+        <dt>Fecha de ingreso</dt><dd>{{ empleado.fecha_ingreso|date:'d/m/Y' }}</dd>
+        <dt>Estado</dt><dd>{{ empleado.get_estado_display }}</dd>
+    </dl>
+    <div class="actions">
+        <a class="button" href="{% url 'personal:empleado_update' empleado.pk %}">Editar</a>
+        <a class="button accent" href="{% url 'personal:empleado_delete' empleado.pk %}">Eliminar</a>
+        <a class="button muted" href="{% url 'personal:empleado_list' %}">Volver</a>
+    </div>
+</div>
+{% endblock %}

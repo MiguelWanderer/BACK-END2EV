@@ -1,0 +1,15 @@
+{% extends 'personal/base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>Home principal</h1>
+<p>Bienvenido al sistema de gestión de personal.</p>
+<div class="actions">
+    {% if user.is_authenticated %}
+        <a class="button" href="{% url 'personal:home' %}">Administración de Personal</a>
+        <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="button muted" type="submit">Cerrar sesión</button></form>
+    {% else %}
+        <a class="button" href="{% url 'login' %}">Iniciar sesión</a>
+        <a class="button accent" href="{% url 'personal:register' %}">Registrarse</a>
+    {% endif %}
+</div>
+{% endblock %}

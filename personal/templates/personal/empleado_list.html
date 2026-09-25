@@ -1,0 +1,22 @@
+{% extends 'personal/base.html' %}
+{% block title %}Empleados{% endblock %}
+{% block content %}
+<div class="topbar"><h1>Empleados</h1><a class="button accent" href="{% url 'personal:empleado_create' %}">Nuevo empleado</a></div>
+{% if empleados %}
+<table>
+    <thead><tr><th>RUT</th><th>Nombre completo</th><th>Cargo</th><th>Departamento</th><th>Estado</th><th>Acciones</th></tr></thead>
+    <tbody>
+    {% for empleado in empleados %}
+    <tr>
+        <td>{{ empleado.rut }}</td>
+        <td>{{ empleado.nombre }} {{ empleado.apellido }}</td>
+        <td>{{ empleado.cargo }}</td>
+        <td>{{ empleado.departamento }}</td>
+        <td>{{ empleado.get_estado_display }}</td>
+        <td><a href="{% url 'personal:empleado_detail' empleado.pk %}">Ver</a> | <a href="{% url 'personal:empleado_update' empleado.pk %}">Editar</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}<div class="panel"><p>No hay empleados registrados.</p></div>{% endif %}
+{% endblock %}

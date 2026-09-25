@@ -1,0 +1,12 @@
+{% extends 'personal/base.html' %}
+{% block title %}Administración de Personal{% endblock %}
+{% block content %}
+<h1>Administración de Personal</h1>
+<p>Administra empleados y consulta la información registrada.</p>
+<div class="actions">
+    <a class="button" href="{% url 'personal:empleado_list' %}">Ver empleados</a>
+    <a class="button accent" href="{% url 'personal:empleado_create' %}">Registrar empleado</a>
+    <a class="button muted" href="{% url 'admin:personal_cargo_changelist' %}">Administrar cargos</a>
+    <a class="button muted" href="{% url 'admin:personal_departamento_changelist' %}">Administrar departamentos</a>
+</div>
+{% endblock %}

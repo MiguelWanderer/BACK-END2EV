@@ -1,0 +1,14 @@
+{% extends 'personal/base.html' %}
+{% block title %}Iniciar sesión{% endblock %}
+{% block content %}
+<h1>Iniciar sesión</h1>
+<form method="post" class="panel">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+    <div class="form-row">{{ field.errors }}{{ field.label_tag }}{{ field }}</div>
+    {% endfor %}
+    <button class="button accent" type="submit">Ingresar</button>
+    <a class="button muted" href="{% url 'personal:register' %}">Crear cuenta</a>
+</form>
+{% endblock %}
